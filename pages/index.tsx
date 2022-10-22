@@ -1,11 +1,16 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Question } from "../components/Question";
-import { reviewQuestions } from "../config/questions";
+import { Question, QuestionSplit } from "../components/Question";
+import { QuestionList } from "../components/QuestionList";
+import { reviewQuestions, SplitQuestion } from "../config/questions";
 
 const Home: NextPage = () => {
+  const singleQuestion = reviewQuestions[0];
+  const splitQuestion = reviewQuestions[2] as SplitQuestion;
   return (
-    // <div className="container mx-auto px-64">
+    // <nav>
+    //   {/* Nav bar goes here */}
+    // </nav>
     <div className="container mx-auto">
       <Head>
         <title>Monthly Reviews</title>
@@ -20,10 +25,17 @@ const Home: NextPage = () => {
         </h1>
       </div>
 
-      <Question
-        title={reviewQuestions[0].title}
-        placeholder={reviewQuestions[0].placeholder}
+      {/* <Question
+        title={singleQuestion.title}
+        placeholder={singleQuestion.placeholder}
       />
+      <QuestionSplit
+        title={splitQuestion.title}
+        placeholder={splitQuestion.placeholder}
+        titleOne={splitQuestion.titleOne}
+        titleTwo={splitQuestion.titleTwo}
+      /> */}
+      <QuestionList questions={reviewQuestions} />
     </div>
   );
 };

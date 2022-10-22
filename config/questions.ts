@@ -1,10 +1,19 @@
-interface question {
+export interface SingleQuestion {
   title: string;
   placeholder: string;
-  questionType: "single" | "split";
+  questionType: "single";
+}
+export interface SplitQuestion {
+  title: string;
+  placeholder: string;
+  questionType: "split";
+  titleOne: string;
+  titleTwo: string;
 }
 
-export const reviewQuestions: question[] = [
+export type Question = SingleQuestion | SplitQuestion;
+
+export const reviewQuestions: Question[] = [
   {
     title: "What were my biggest wins?",
     placeholder:
@@ -22,12 +31,16 @@ export const reviewQuestions: question[] = [
     placeholder:
       "The goal here is to identify in the present moment what's working and what's not working.",
     questionType: "split",
+    titleOne: "Most satisfied",
+    titleTwo: "Least satisfied",
   },
   {
     title: "What am I going to do more of this month? Less of?",
     placeholder:
       "Use the 80/20 rule. 20% of your health, beliefs, actions etc are elading to 80% of both your positive and negative results.",
     questionType: "split",
+    titleOne: "More off",
+    titleTwo: "Less off",
   },
   {
     title: "What am I thinking about for the upcoming month?",
