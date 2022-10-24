@@ -1,7 +1,9 @@
 interface Question {
-  title: string;
+  title?: string;
   placeholder: string;
 }
+// use this https://tailwindui.com/components/application-ui/application-shells/multi-column
+// disclosure component in headlessui
 export const Question = ({ title, placeholder }: Question) => {
   return (
     <div className="mb-4">
@@ -26,7 +28,7 @@ export const Question = ({ title, placeholder }: Question) => {
 };
 
 interface QuestionSplit {
-  title: string;
+  title?: string;
   placeholder: string;
   titleOne: string;
   titleTwo: string;
