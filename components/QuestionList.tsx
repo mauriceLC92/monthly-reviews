@@ -1,4 +1,5 @@
 import { Question as QuestionType } from "../config/questions";
+import { Accordion } from "./Accordion/Accordion";
 import { Question, QuestionSplit } from "./Question";
 
 interface QuestionList {
@@ -6,27 +7,33 @@ interface QuestionList {
 }
 export const QuestionList = ({ questions }: QuestionList) => {
   return (
-    <>
-      {questions.map((question) => {
+    <div className="space-y-2">
+      {questions.map((question, index) => {
         if (question.questionType === "split") {
           return (
-            <QuestionSplit
+            <Accordion
               key={question.title}
-              title={question.title}
-              placeholder={question.placeholder}
-              titleOne={question.titleOne}
-              titleTwo={question.titleTwo}
+              question={question.title}
+              answer={
+                <QuestionSplit
+                  key={question.title}
+                  placeholder={question.placeholder}
+                  titleOne={question.titleOne}
+                  titleTwo={question.titleTwo}
+                />
+              }
             />
           );
         }
         return (
-          <Question
+          <Accordion
+            defaultOpen={index === 0}
             key={question.title}
-            title={question.title}
-            placeholder={question.placeholder}
+            question={question.title}
+            answer={<Question placeholder={question.placeholder} />}
           />
         );
       })}
-    </>
+    </div>
   );
 };

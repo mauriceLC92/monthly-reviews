@@ -1,12 +1,10 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Question, QuestionSplit } from "../components/Question";
+import { NavBar } from "../components/NavBar/Nav";
 import { QuestionList } from "../components/QuestionList";
-import { reviewQuestions, SplitQuestion } from "../config/questions";
+import { reviewQuestions } from "../config/questions";
 
 const Home: NextPage = () => {
-  const singleQuestion = reviewQuestions[0];
-  const splitQuestion = reviewQuestions[2] as SplitQuestion;
   return (
     // <nav>
     //   {/* Nav bar goes here */}
